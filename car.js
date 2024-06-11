@@ -4,18 +4,21 @@ class Car {
     this.y = y;
     this.width = width;
     this.height = height;
-    this.controls = new Controls();
 
     this.speed = 0;
     this.accleration = 0.2;
     this.maxSpeed = 3;
     this.friction = 0.05;
-
     this.angle = 0;
+
+    this.sensor = new Sensor(this); // Create a new sensor object
+    this.controls = new Controls();
+
   }
 
   update() {
     this.#move(); // Controls the car's movement
+    this.sensor.update(); // Update the sensor
   }
 
   #move() {
@@ -53,5 +56,7 @@ class Car {
     ctx.fill();
 
     ctx.restore(); // Restore the canvas to the last save point
+
+    this.sensor.draw(ctx); // Draw the sensor
   }
 }
