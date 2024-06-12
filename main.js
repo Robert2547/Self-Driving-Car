@@ -38,17 +38,12 @@ const traffic = [
   new Car(road.getLaneCenter(2), -1100, 30, 50, "DUMMY", 2),
   new Car(road.getLaneCenter(2), -1500, 30, 50, "DUMMY", 2),
   new Car(road.getLaneCenter(1), -1500, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(1), -1700, 30, 50, "DUMMY", 2), // End Road
+  new Car(road.getLaneCenter(2), -1700, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(0), -1700, 30, 50, "DUMMY", 2),
 ];
 
 animate();
-
-function save() {
-  localStorage.setItem("bestBrain", JSON.stringify(bestCar.brain));
-}
-
-function discard() {
-  localStorage.removeItem("bestBrain");
-}
 
 function generateCars(N) {
   const cars = [];
@@ -99,5 +94,12 @@ function animate(time) {
   } catch (error) {
     console.error(error);
   }
+
+  if (cars.every((car) => car.damaged)) {
+    // If all cars are damaged show popup
+    console.log("All cars are damaged");
+    showPopup();
+  }
+
   requestAnimationFrame(animate); // Call the animate function 60 times per second, give the illusion of movement
 }
