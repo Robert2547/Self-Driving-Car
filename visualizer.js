@@ -25,7 +25,7 @@ class Visualizer {
         levelTop,
         width,
         levelHeight,
-        i == network.levels.length - 1 ? ["🠉", "🠈", "🠊", "🠋"] : []
+        i == network.levels.length - 1 ? ["↑", "<-", "->", "↓"] : []
       );
     }
   }
