@@ -1,6 +1,6 @@
 class Controls {
   constructor(type) {
-    this.forward = false;
+    this.forward = true;
     this.reverse = false;
     this.left = false;
     this.right = false;
@@ -37,7 +37,7 @@ class Controls {
     document.onkeyup = (e) => {
       switch (e.key) {
         case "ArrowUp":
-          this.forward = false;
+          this.forward = true;
           break;
         case "ArrowDown":
           this.reverse = false;
